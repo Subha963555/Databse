@@ -10,12 +10,13 @@ app.use(express.json());
 // Database configuration
 // For Render deployment, use environment variables
 const dbConfig = {
-    host: 'localhost', // or your Mac's IP address for remote connections
-    user: 'myuser',
-    password: 'mypassword',
-    database: 'testdb',
+    host: '127.0.0.1',
+    user: 'root',
+    password: 'subha9932@',
+    database: 'customer',
     port: 3306
   };
+  
 
 // Create connection pool instead of single connection
 const pool = mysql.createPool(dbConfig);
