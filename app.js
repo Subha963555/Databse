@@ -7,18 +7,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Database configuration
-// For Render deployment, use environment variables
+// Database configuration using environment variables
 const dbConfig = {
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'subha9932@',
-    database: 'customer',
-    port: 3306
-  };
-  
+  host: process.env.MYSQL_HOST || '127.0.0.1', // Use environment variable for remote DB
+  user: process.env.MYSQL_USER || 'root',
+  password: process.env.MYSQL_PASSWORD || 'subha9932@',
+  database: process.env.MYSQL_DB || 'customers',  // Make sure DB name matches
+  port: 3306,
+};
 
-// Create connection pool instead of single connection
+// Create connection pool
 const pool = mysql.createPool(dbConfig);
 const promisePool = pool.promise();
 
